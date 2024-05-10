@@ -26,7 +26,41 @@ This commands includes
 • Other IP Commands e.g. show ip route etc.
 <BR>
 
+## PROGRAM
+## CLIENT
+```
+import socket from pythonping import ping
+s=socket.socket() s.bind(('localhost'8000))
+s.listen(5) c,addr=s.accept()
+ while True:
+  hostname=c.recv(1024).decode()
+ try:
+   c.send(str(ping(hostname, verbose=False)).encode())
+ except KeyError:
+   c.send("Not Found".encode())
+```
+
+## SERVER
+```
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True: ip=input("Enter the website you want to ping ")
+s.send(ip.encode())
+print(s.recv(1024).decode())
+
+```
+
 ## Output
+## PING COMMAND
+## CLIENT
+![325101129-3104feb5-6a1d-41bc-bcf1-88a451a6f2f2](https://github.com/lekasri12/4.Execution_of_NetworkCommends/assets/149037427/e5746606-6e13-40d2-a5ee-f5d988bd202e)
+
+## SERVER
+![325101177-455acf80-50ec-4a8c-af04-fb9049018eaa](https://github.com/lekasri12/4.Execution_of_NetworkCommends/assets/149037427/db4611cb-6229-4b47-ac7d-df4e532a7594)
+
+## TRACERT COMMAND
+![325101228-7c0aa54e-ccd4-4069-a0d7-9d684004875f](https://github.com/lekasri12/4.Execution_of_NetworkCommends/assets/149037427/884aa326-6a0c-4be8-9178-dadd2fadd35f)
 
 ## Result
 Thus Execution of Network commands Performed 
